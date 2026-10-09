@@ -1,0 +1,30 @@
+{
+  "dataset_id": "demo_ru_regional_01",
+  "sources": [
+    {
+      "id": "synthetic_operations",
+      "status": "synthetic",
+      "note": "Заказы, машины и водители созданы генератором scripts/build_demo_dataset.py. Это не выгрузка компании."
+    },
+    {
+      "id": "demo_network",
+      "status": "synthetic",
+      "note": "Длины и времена условные. Карта и платные дороги не используются."
+    },
+    {
+      "id": "demo_tariffs",
+      "status": "synthetic",
+      "note": "Ставки и предложения подрядчиков заданы для демонстрации."
+    },
+    {
+      "id": "rosstat_not_imported",
+      "status": "not_imported",
+      "note": "Макроряд Росстата не загружался и на тарифы не влияет."
+    },
+    {
+      "id": "company_not_connected",
+      "status": "not_connected",
+      "note": "Данные компании не подключены."
+    }
+  ]
+}

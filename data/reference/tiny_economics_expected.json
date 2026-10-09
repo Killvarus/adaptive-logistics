@@ -1,0 +1,144 @@
+{
+  "test_name": "tiny_backhaul_reference",
+  "status": "expected_arithmetic_not_application_run",
+  "note": "Ожидаемые результаты из явных двух маршрутов; не замер качества рынка и не лог запущенного MVP.",
+  "scenario": {
+    "fuel_change_pct": 25,
+    "wage_change_pct": 10,
+    "carrier_rate_change_pct": 0,
+    "customer_rate_change_pct": 0,
+    "demand_change_pct": 0,
+    "disabled_vehicle_ids": [],
+    "disabled_driver_ids": [],
+    "maintenance_remaining_overrides_m": {}
+  },
+  "A": {
+    "routing_policy": "return_between_orders",
+    "description": "D→B с грузом; B→D пусто; D→B пусто; B→D с грузом",
+    "route_order_ids": [
+      "O-01",
+      "O-02"
+    ],
+    "ledger_categories_kopecks": {
+      "own_fuel": 800000,
+      "own_wear": 200000,
+      "driver_fixed_wage": 600000,
+      "driver_variable_pay": 0,
+      "fleet_fixed_cost": 200000,
+      "vehicle_activation": 0,
+      "outsourcing": 0,
+      "cancellation_compensation": 0
+    },
+    "metrics": {
+      "recognized_revenue_kopecks": 2100000,
+      "total_cost_kopecks": 1800000,
+      "operating_result_kopecks": 300000,
+      "margin_pct": 14.285714285714286,
+      "total_orders": 2,
+      "served_orders": 2,
+      "own_served_orders": 2,
+      "outsourced_orders": 0,
+      "unserved_orders": 0,
+      "service_rate": 1,
+      "own_distance_m": 400000,
+      "own_loaded_distance_m": 200000,
+      "own_empty_distance_m": 200000,
+      "own_loaded_distance_share": 0.5,
+      "capacity_utilization": 0.25,
+      "min_maintenance_slack_m": 600000,
+      "min_delivery_slack_min": 60
+    },
+    "route_duty_min": 540,
+    "route_driving_min": 480
+  },
+  "B": {
+    "routing_policy": "return_between_orders",
+    "description": "Та же последовательность при новых затратах",
+    "route_order_ids": [
+      "O-01",
+      "O-02"
+    ],
+    "ledger_categories_kopecks": {
+      "own_fuel": 1000000,
+      "own_wear": 200000,
+      "driver_fixed_wage": 660000,
+      "driver_variable_pay": 0,
+      "fleet_fixed_cost": 200000,
+      "vehicle_activation": 0,
+      "outsourcing": 0,
+      "cancellation_compensation": 0
+    },
+    "metrics": {
+      "recognized_revenue_kopecks": 2100000,
+      "total_cost_kopecks": 2060000,
+      "operating_result_kopecks": 40000,
+      "margin_pct": 1.9047619047619047,
+      "total_orders": 2,
+      "served_orders": 2,
+      "own_served_orders": 2,
+      "outsourced_orders": 0,
+      "unserved_orders": 0,
+      "service_rate": 1,
+      "own_distance_m": 400000,
+      "own_loaded_distance_m": 200000,
+      "own_empty_distance_m": 200000,
+      "own_loaded_distance_share": 0.5,
+      "capacity_utilization": 0.25,
+      "min_maintenance_slack_m": 600000,
+      "min_delivery_slack_min": 60
+    },
+    "route_duty_min": 540,
+    "route_driving_min": 480
+  },
+  "C": {
+    "routing_policy": "direct_chaining",
+    "description": "D→B с грузом; B→D с обратным грузом",
+    "route_order_ids": [
+      "O-01",
+      "O-02"
+    ],
+    "ledger_categories_kopecks": {
+      "own_fuel": 500000,
+      "own_wear": 100000,
+      "driver_fixed_wage": 660000,
+      "driver_variable_pay": 0,
+      "fleet_fixed_cost": 200000,
+      "vehicle_activation": 0,
+      "outsourcing": 0,
+      "cancellation_compensation": 0
+    },
+    "metrics": {
+      "recognized_revenue_kopecks": 2100000,
+      "total_cost_kopecks": 1460000,
+      "operating_result_kopecks": 640000,
+      "margin_pct": 30.476190476190474,
+      "total_orders": 2,
+      "served_orders": 2,
+      "own_served_orders": 2,
+      "outsourced_orders": 0,
+      "unserved_orders": 0,
+      "service_rate": 1,
+      "own_distance_m": 200000,
+      "own_loaded_distance_m": 200000,
+      "own_empty_distance_m": 0,
+      "own_loaded_distance_share": 1.0,
+      "capacity_utilization": 0.5,
+      "min_maintenance_slack_m": 800000,
+      "min_delivery_slack_min": 300
+    },
+    "route_duty_min": 300,
+    "route_driving_min": 240
+  },
+  "comparison_C_vs_B": {
+    "same_active_orders": true,
+    "same_served_orders": true,
+    "comparable_cost_saving": true,
+    "cost_delta_kopecks": -600000,
+    "cost_saving_kopecks": 600000,
+    "cost_saving_pct": 29.12621359223301,
+    "revenue_delta_kopecks": 0,
+    "operating_result_delta_kopecks": 600000,
+    "margin_delta_pp": 28.571428571428573,
+    "empty_distance_delta_m": -200000
+  }
+}

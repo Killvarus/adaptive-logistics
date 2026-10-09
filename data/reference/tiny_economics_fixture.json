@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "dataset_id": "tiny_backhaul",
+    "dataset_version": "1.0.0",
+    "dataset_kind": "synthetic_demo",
+    "seed": 20261009,
+    "planning_start": "2026-10-09T08:00:00+03:00",
+    "timezone": "Europe/Moscow",
+    "horizon_min": 600,
+    "currency": "RUB",
+    "country_code": "RU",
+    "disclaimer": "Авторский арифметический тест. Не реальные перевозки или нормативы."
+  },
+  "base_active_count": 2,
+  "base_parameters": {
+    "fuel_price_kopecks_per_liter": 8000
+  },
+  "nodes": [
+    {
+      "id": "D",
+      "name": "Условный РЦ",
+      "kind": "depot",
+      "ui_x": 180,
+      "ui_y": 180,
+      "country_code": "RU",
+      "provenance_id": "synthetic_reference"
+    },
+    {
+      "id": "B",
+      "name": "Условный клиент",
+      "kind": "customer",
+      "ui_x": 650,
+      "ui_y": 180,
+      "country_code": "RU",
+      "provenance_id": "synthetic_reference"
+    }
+  ],
+  "edges": [
+    {
+      "id": "D_B",
+      "from_node_id": "D",
+      "to_node_id": "B",
+      "distance_m": 100000,
+      "travel_time_min": 120,
+      "max_payload_kg": null,
+      "allowed_body_types": [],
+      "provenance_id": "synthetic_reference"
+    },
+    {
+      "id": "B_D",
+      "from_node_id": "B",
+      "to_node_id": "D",
+      "distance_m": 100000,
+      "travel_time_min": 120,
+      "max_payload_kg": null,
+      "allowed_body_types": [],
+      "provenance_id": "synthetic_reference"
+    }
+  ],
+  "order_pool": [
+    {
+      "id": "O-01",
+      "pickup_node_id": "D",
+      "delivery_node_id": "B",
+      "weight_kg": 6000,
+      "required_body_type": "tent",
+      "sector_tag": "retail",
+      "pickup_earliest_min": 0,
+      "pickup_latest_min": 480,
+      "delivery_deadline_min": 600,
+      "pickup_service_min": 15,
+      "delivery_service_min": 15,
+      "base_revenue_kopecks": 1200000,
+      "cancellation_compensation_kopecks": 0,
+      "outsourcing_allowed": false,
+      "demand_rank": 1,
+      "provenance_id": "synthetic_reference"
+    },
+    {
+      "id": "O-02",
+      "pickup_node_id": "B",
+      "delivery_node_id": "D",
+      "weight_kg": 4000,
+      "required_body_type": "tent",
+      "sector_tag": "retail",
+      "pickup_earliest_min": 0,
+      "pickup_latest_min": 480,
+      "delivery_deadline_min": 600,
+      "pickup_service_min": 15,
+      "delivery_service_min": 15,
+      "base_revenue_kopecks": 900000,
+      "cancellation_compensation_kopecks": 0,
+      "outsourcing_allowed": false,
+      "demand_rank": 2,
+      "provenance_id": "synthetic_reference"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "V-01",
+      "name": "Условная машина 10 т",
+      "body_type": "tent",
+      "capacity_kg": 10000,
+      "home_node_id": "D",
+      "assigned_driver_id": "D-01",
+      "available_from_min": 0,
+      "available_until_min": 600,
+      "available": true,
+      "maintenance_due_in_m": 1000000,
+      "maintenance_buffer_m": 0,
+      "fixed_cost_per_horizon_kopecks": 200000,
+      "activation_cost_kopecks": 0,
+      "wear_kopecks_per_km": 500,
+      "fuel_empty_ml_per_km": 250,
+      "fuel_loaded_ml_per_km": 250,
+      "provenance_id": "synthetic_reference"
+    }
+  ],
+  "drivers": [
+    {
+      "id": "D-01",
+      "available": true,
+      "available_from_min": 0,
+      "available_until_min": 600,
+      "max_driving_min": 540,
+      "max_duty_min": 600,
+      "fixed_wage_per_horizon_kopecks": 600000,
+      "variable_pay_per_hour_kopecks": 0,
+      "provenance_id": "synthetic_reference"
+    }
+  ],
+  "carriers": [],
+  "offers": [],
+  "provenance": [
+    {
+      "id": "synthetic_reference",
+      "title": "Авторский контрольный пример для MVP",
+      "kind": "synthetic_demo",
+      "source_url": null,
+      "country_code": "RU",
+      "note": "Условные узлы D и B. Не наблюдения перевозчика и не данные Росстата."
+    }
+  ]
+}
